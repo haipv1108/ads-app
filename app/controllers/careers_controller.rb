@@ -1,0 +1,3 @@
+class CareersController < AdminController
+
+end

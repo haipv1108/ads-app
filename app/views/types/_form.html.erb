@@ -1,0 +1,16 @@
+<%= form_for(@type) do |f| %>
+    <% if @type.errors.any? %>
+        <h2><%= pluralize(@type.errors.count, "error") %>
+          prohibited this post from being saved:
+        </h2>
+        <% @type.errors.full_messages.each do |message| %>
+            <div class='alert alert-danger'><%= message %></div>
+        <% end %>
+    <% end %>
+
+    <div class='form-group'>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control', placeholder: 'Input type of Ads' %>
+    </div>
+    <%= f.submit class:'btn btn-primary' %>
+<% end %>

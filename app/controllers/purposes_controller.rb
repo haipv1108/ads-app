@@ -1,0 +1,3 @@
+class PurposesController < AdminController
+
+end

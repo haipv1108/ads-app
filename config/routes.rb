@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   get 'contact' => 'static_pages#contact'
   get 'service' => 'static_pages#service'
   get 'about' => 'static_pages#about'
+
+  resources :articles
+  resources :types
+  resources :careers
+  resources :purposes
 end
