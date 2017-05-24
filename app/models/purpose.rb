@@ -1,4 +1,4 @@
-class Purpose < ApplicationRecord
+class Purpose < ActiveRecord::Base
   has_many :article_purposes
   has_many :articles, through: :article_purposes
   validates :name,

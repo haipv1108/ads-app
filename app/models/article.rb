@@ -1,4 +1,4 @@
-class Article < ApplicationRecord
+class Article < ActiveRecord::Base
   belongs_to :type
   has_many :article_purposes
   has_many :purposes, through: :article_purposes
@@ -13,4 +13,6 @@ class Article < ApplicationRecord
   validates :description,
             presence: true,
             length: { minimum: 5 }
+  validates :type_id,
+            presence: true
 end

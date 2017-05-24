@@ -1,0 +1,66 @@
+<div class="row">
+  <%= form_for(@article) do |f| %>
+    <% if @article.errors.any? %>
+      <h2><%= pluralize(@article.errors.count, 'errors') %>
+              prohibited this article from being saved:</h2>
+      <% @article.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger"><%= message %></div>
+      <% end %>
+    <% end %>
+    <div class="col-md-6">
+      <div class="ads-article-left">
+        <div class="form-group article-text-label">
+          <%= f.label :fanpage %>
+          <%= f.text_field :fanpage, class: 'form-control article-text-input',
+                           placeholder: 'Enter fanpage name...' %>
+          <small class="article-help-small"><i>(Example: Adayroi.com)</i></small>
+        </div>
+        <div class="form-group article-text-label">
+          <%= f.label :link, 'Post link' %>
+          <%= f.text_field :link, class: 'form-control article-text-input',
+                           placeholder: 'Enter post link...' %>
+          <small class="article-help-small"><i>(Instructions to get links embedded ads)</i></small>
+        </div>
+        <div class="form-group article-text-label">
+          <%= f.label :description %>
+          <%= f.text_area :description,
+                          class: 'form-control article-text-input', rows: 10,
+                          placeholder: 'Enter post description...' %>
+          <small class="article-help-small"><i>(Example: Advertising English courses online directed to students)</i></small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="ads-article-group">
+        <div class="form-group">
+          <h4><%= f.label :type_id, 'Type advertisement',
+                          class: 'article-select-label' %></h4>
+          <div class="article-select-input">
+            <%= collection_radio_buttons(:article, :type_id, Type.all, :id, :name) %>
+          </div>
+        </div>
+      </div>
+      <div class="ads-article-group">
+        <div class="form-group">
+          <h4><%= f.label :career, 'Career, fields of advertisement',
+                          class: 'article-select-label' %></h4>
+          <div class="article-select-input">
+            <%= collection_check_boxes(:article, :career_ids, Career.all, :id, :name) %>
+          </div>
+        </div>
+      </div>
+      <div class="ads-article-group">
+        <div class="form-group">
+          <h4><%= f.label :purpose, 'Purpose of advertisement',
+                          class: 'article-select-label' %></h4>
+          <div class="article-select-input">
+            <%= collection_check_boxes(:article, :purpose_ids, Purpose.all, :id, :name) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

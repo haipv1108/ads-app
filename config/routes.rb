@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
 
   resources :articles
+  get 'articles/preview/:id' => 'articles#preview', as: 'preview_article'
   resources :types
   resources :careers
   resources :purposes

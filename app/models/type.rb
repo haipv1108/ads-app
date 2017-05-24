@@ -1,5 +1,5 @@
-class Type < ApplicationRecord
-  # has_many :articles, dependent: :destroy
+class Type < ActiveRecord::Base
+  has_many :articles, dependent: :destroy
   validates :name,
             presence: true,
             uniqueness: true,

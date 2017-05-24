@@ -1,0 +1,56 @@
+<% provide(:title, "Preview #{@article.fanpage}") %>
+<%= render 'static_pages/filter' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mqc-single-ad-inner">
+        <div class="mqc-single-thumb">
+          <div class="mqc-single-thumb-inner">
+            <div class="fb-post" data-href="<%= @article.link %>" data-width="500"></div>
+            <%= image_tag('loading.svg', :alt => 'Loading...', :class => 'loading') %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="mqc-single-block">
+        <div class="mqc-single-title">
+          <%= @article.fanpage %>
+        </div>
+        <div class="mqc-single-des">
+          <%= @article.description %>
+        </div>
+        <div class="mqc-single-extra">
+          <div class="mqc-se-item">
+            <div class="mqc-dot-title">
+              Career, fields of advertisement
+            </div>
+            <div class="mqc-se-content">
+              <% @article.careers.each do |career| %>
+                <%= career.name + ", " %>
+              <% end %>
+            </div>
+          </div>
+          <div class="mqc-se-item">
+            <div class="mqc-dot-title">
+              Purpose of advertisement
+            </div>
+            <div class="mqc-se-content">
+              <% @article.purposes.each do |purpose| %>
+                  <%= purpose.name + ", " %>
+              <% end %>
+            </div>
+          </div>
+          <div class="mqc-se-item">
+            <div class="mqc-dot-title">
+              Type advertisement
+            </div>
+            <div class="mqc-se-content">
+              <%= @article.type.name %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

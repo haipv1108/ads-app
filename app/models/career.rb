@@ -1,4 +1,4 @@
-class Career < ApplicationRecord
+class Career < ActiveRecord::Base
   has_many :article_careers
   has_many :articles, through: :article_careers
   validates :name,
