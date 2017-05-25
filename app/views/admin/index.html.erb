@@ -1,0 +1,88 @@
+<%= provide(:title, "All articles") %>
+<div class="container"><h2>All articles</h2></div>
+
+<div id="exTab2" class="container">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a  href="#approved" data-toggle="tab">Approved</a>
+    </li>
+    <li><a href="#processing" data-toggle="tab">Processing</a>
+    </li>
+  </ul>
+
+  <div class="tab-content ">
+    <div class="tab-pane active" id="approved">
+      <br>
+      <% if @article_approved.count == 0 %>
+        <div>
+          No posts have been approved yet.
+          <%= link_to 'Check now!', '#processing', class: 'btn btn-primary' %>
+        </div>
+      <% else %>
+        <table class="table table-striped table-hover table-bordered table-responsive">
+          <thead>
+            <tr>
+              <th>Fanpage</th>
+              <th>Link</th>
+              <th>Create at</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @article_approved.each do |article_approved| %>
+              <tr>
+                <td><%= article_approved.fanpage %></td>
+                <td><%= article_approved.link %></td>
+                <td><%= article_approved.created_at %></td>
+                <td><%= link_to 'Show', article_path(article_approved),
+                                target: '_blank', class: 'btn btn-primary' %>
+                    <%= link_to 'Delete', '#', class: 'btn btn-danger' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+    <div class="tab-pane" id="processing">
+      <br>
+      <% if @article_processing.count == 0 %>
+          <div>
+            No posts have been approved yet.
+            <%= link_to 'Create now!', new_article_path, class: 'btn btn-primary' %>
+          </div>
+      <% else %>
+          <table class="table table-striped table-hover table-bordered table-responsive">
+            <thead>
+            <tr>
+              <th>Fanpage</th>
+              <th>Link</th>
+              <th>Create at</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @article_processing.each do |article_processing| %>
+                <tr>
+                  <td><%= article_processing.fanpage %></td>
+                  <td><%= article_processing.link %></td>
+                  <td><%= article_processing.created_at %></td>
+                  <td><%= link_to 'Show', preview_article_path(article_processing),
+                                  target: '_blank', class: 'btn btn-primary' %>
+                    <%= link_to 'Approve', approve_article_admin_path(article_processing),
+                                class: 'btn btn-success' %>
+                    <%= link_to 'Delete', admin_path(article_processing),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?'},
+                                class: 'btn btn-danger' %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<hr>

@@ -27,7 +27,7 @@
             </div>
             <div class="mqc-se-content">
               <% @article.careers.each do |career| %>
-                <%= career.name + ", " %>
+                  <%= career.name + ", " %>
               <% end %>
             </div>
           </div>
@@ -50,17 +50,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <% if current_user&.admin %>
-          <% unless @article.status? %>
-            <%= link_to 'Approve', approve_article_admin_path(@article), class: 'btn btn-success' %>
-          <% end %>
-          <%= link_to 'Delete', admin_path(@article),
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' },
-                      class: 'btn btn-danger' %>
-        <% end %>
       </div>
     </div>
   </div>

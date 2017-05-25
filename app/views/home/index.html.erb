@@ -1,0 +1,11 @@
+<%= render 'filter' %>
+
+<div class="container">
+  <% if @articles.count == 0 %>
+    <div class="alert alert-info">There are no ads article available. Contribute now.</div>
+  <% else %>
+    <% @articles.each do |article| %>
+      <div class="post-box col-lg-4 col-md-4 col-sm-4 fb-post img-responsive" data-href="<%= article.link %>" data-width="200"></div>
+    <% end %>
+  <% end %>
+</div>
