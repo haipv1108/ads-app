@@ -1,12 +1,12 @@
-<% provide(:title, 'New Type Ads') %>
+<% provide(:title, "Edit type: #{@type.name}") %>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4>New Type Ads</h4>
+    <h4>Edit Type:  <%= @type.name %></h4>
   </div>
   <div class="panel-body">
     <%= render 'form' %>
   </div>
   <div class="panel-footer">
-    <%= link_to 'Back All Type', types_path, class: 'btn btn-info' %>
+    <%= link_to 'Back All Type', admin_types_path, class: 'btn btn-primary' %>
   </div>
 </div>

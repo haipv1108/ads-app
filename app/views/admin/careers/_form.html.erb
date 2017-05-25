@@ -1,0 +1,8 @@
+<%= form_for([:admin, @career]) do |f| %>
+  <%= render 'shared/error', object: @career %>
+  <div class="form-group">
+    <%= f.label :name, "Career Name" %>
+    <%= f.text_field :name, class: 'form-control', placeholder: "Career's name" %>
+  </div>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

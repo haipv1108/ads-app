@@ -1,0 +1,10 @@
+<tr>
+  <td><%= purpose.name %></td>
+  <td>
+    <%= link_to 'Edit', edit_admin_purpose_path(purpose), class: 'btn btn-primary' %>
+    <%= link_to 'Delete', admin_purpose_path(purpose),
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-danger' %>
+  </td>
+</tr>

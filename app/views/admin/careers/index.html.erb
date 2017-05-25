@@ -1,0 +1,27 @@
+<% provide(:title, 'All careers') %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>All careers</h4>
+  </div>
+  <div class="panel-body">
+    <div class="text-center"><%= will_paginate %></div>
+    <% if @careers.count == 0 %>
+      No careers. <%= link_to 'Create now!', new_admin_career_path, class: 'btn btn-primary' %>
+    <% else %>
+      <table class="table table-bordered table-hover table-striped table-responsive">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render @careers %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+  <div class="panel-footer">
+    <%= link_to 'Create new career', new_admin_career_path, class: 'btn btn-primary' %>
+  </div>
+</div>

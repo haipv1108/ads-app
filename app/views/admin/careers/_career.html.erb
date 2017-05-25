@@ -1,0 +1,10 @@
+<tr>
+  <td><%= career.name %></td>
+  <td>
+    <%= link_to 'Edit', edit_admin_career_path(career), class: 'btn btn-primary' %>
+    <%= link_to 'Delete', admin_career_path(career),
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-danger' %>
+  </td>
+</tr>

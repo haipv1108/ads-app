@@ -1,0 +1,10 @@
+<tr>
+  <td><%= type.name %></td>
+  <td>
+    <%= link_to 'Edit', edit_admin_type_path(type), class: 'btn btn-primary' %>
+    <%= link_to 'Delete', admin_type_path(type),
+                method: :delete,
+                data: { confirm: 'Are you sure?'},
+                class: 'btn btn-danger' %>
+  </td>
+</tr>

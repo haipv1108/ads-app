@@ -1,0 +1,8 @@
+<%= form_for([:admin, @purpose]) do |f| %>
+  <%= render 'shared/error', object: @purpose %>
+  <div class="form-group">
+    <%= f.label :name, "Purpose Name" %>
+    <%= f.text_field :name, class: 'form-control', placeholder: "Purpose's name" %>
+  </div>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
