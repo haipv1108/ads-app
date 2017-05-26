@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: [:new, :create, :show]
   get 'articles/preview/:id' => 'articles#preview', as: 'preview_article'
+  get 'search_articles', to:  'articles#search'
 
   namespace :admin do
     resources :types, except: [:show]
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
 
   resources :admin, only: [:index, :destroy]
   get 'admin/approve/:id' => 'admin#approve', as: 'approve_article_admin'
+
 end

@@ -1,1 +1,36 @@
-<h2>Show filter bar</h2>
+<div class="container">
+  <div class="row">
+    <%= form_tag(search_articles_path, method: :get) do %>
+      <div class="form-group row no-padding text-center col-md-12">
+        <div class="col-md-10">
+          <%= text_field_tag(:keyword, params[:article],
+                             placeholder: 'Enter keyword to find',
+                             autofocus: true,
+                             class: 'form-control search-box input-lg') %>
+        </div>
+        <div class="col-md-2">
+          <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
+            <i class="fa fa-search"></i>Look up a article
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group row no-padding text-center col-md-10">
+        <div class="col-md-3 col-md-offset-1">
+          <%= select_tag 'type_id',
+                         options_from_collection_for_select(Type.all, :id, :name),
+                         prompt: 'All types' %>
+        </div>
+        <div class="col-md-3">
+          <%= select_tag 'career_id',
+                         options_from_collection_for_select(Career.all, :id, :name),
+                         prompt: 'All careers' %>
+        </div>
+        <div class="col-md-3">
+          <%= select_tag 'purpose_id',
+                         options_from_collection_for_select(Purpose.all, :id, :name),
+                         prompt: 'All purposes' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

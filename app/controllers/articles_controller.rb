@@ -26,6 +26,44 @@ class ArticlesController < ApplicationController
 
   end
 
+  def search
+    query_sql = "SELECT articles.* FROM articles"
+    where = " WHERE ((fanpage LIKE '#{params[:keyword]}') OR (description LIKE '%#{params[:keyword]}%'))"
+    unless params[:type_id].empty?
+      query_sql += " INNER JOIN types ON types.id = articles.type_id"
+      where += " AND types.id = #{params[:type_id].to_i}"
+    end
+    unless params[:career_id].empty?
+      query_sql += " INNER JOIN article_careers ON article_careers.article_id = articles.id INNER JOIN careers ON careers.id = article_careers.career_id"
+      where += " AND careers.id = #{params[:career_id]}"
+    end
+
+    unless params[:purpose_id].empty?
+      query_sql += " INNER JOIN article_purposes ON article_purposes.article_id = articles.id INNER JOIN purposes ON purposes.id = article_purposes.purpose_id"
+      where += " AND purposes.id = #{params[:purpose_id]}"
+    end
+    query = query_sql + where
+    @articles = Article.find_by_sql(query)
+    #
+    # @articles_keyword = Article.search_by_keyword(params[:keyword])
+    # if params[:type_id].empty?
+    #   @articles_type = Article.all
+    # else
+    #   @articles_type = Article.search_by_type(params[:type_id])
+    # end
+    # if params[:career_id].empty?
+    #   @articles_career = Article.all
+    # else
+    #   @articles_career = Article.search_by_career(params[:career_id])
+    # end
+    # if params[:purpose_id].empty?
+    #   @articles_purpose = Article.all
+    # else
+    #   @articles_purpose = Article.search_by_purpose(params[:purpose_id])
+    # end
+    # # @articles = @articles_type & @articles_career & @articles_purpose & @articles_keyword
+  end
+
   private
     def article_params
       params.require(:article).permit(:fanpage, :link, :description, :type_id, career_ids: [], purpose_ids: [])

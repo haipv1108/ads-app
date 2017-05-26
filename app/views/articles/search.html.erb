@@ -1,0 +1,11 @@
+<% if @articles.count == 0 %>
+  <div class="alert alert-danger">
+    Nothing to show.
+  </div>
+<% else %>
+  <%= @articles.count %><br>
+  <% @articles.each do |article| %>
+    <%= article.id %>
+    <%= article.fanpage %><br>
+  <% end %>
+<% end %>
