@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'search_articles', to:  'articles#search'
 
   namespace :admin do
+    get '', to: 'dashboards#index', as: '/'
     resources :types, except: [:show]
     resources :careers, except: [:show]
     resources :purposes, except: [:show]

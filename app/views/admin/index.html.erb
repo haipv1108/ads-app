@@ -3,15 +3,16 @@
 
 <div id="exTab2" class="container">
   <ul class="nav nav-tabs">
-    <li class="active">
+    <li>
       <a  href="#approved" data-toggle="tab">Approved</a>
     </li>
-    <li><a href="#processing" data-toggle="tab">Processing</a>
+    <li class="active">
+      <a href="#processing" data-toggle="tab">Processing</a>
     </li>
   </ul>
 
   <div class="tab-content ">
-    <div class="tab-pane active" id="approved">
+    <div class="tab-pane" id="approved">
       <br>
       <% if @article_approved.count == 0 %>
         <div>
@@ -44,7 +45,7 @@
         </table>
       <% end %>
     </div>
-    <div class="tab-pane" id="processing">
+    <div class="tab-pane active" id="processing">
       <br>
       <% if @article_processing.count == 0 %>
           <div>

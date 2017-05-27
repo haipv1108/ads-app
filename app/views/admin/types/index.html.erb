@@ -4,7 +4,7 @@
     <h4>All Types</h4>
   </div>
   <div class="panel-body">
-    <div class="text-center"><%= will_paginate %></div>a
+    <div class="text-center"><%= will_paginate %></div>
     <% if @types.count == 0 %>
       No types. <%= link_to 'Create now!', new_admin_type_path, class: 'btn btn-primary' %>
     <% else %>

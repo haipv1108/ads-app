@@ -44,24 +44,6 @@ class ArticlesController < ApplicationController
     end
     query = query_sql + where
     @articles = Article.find_by_sql(query)
-    #
-    # @articles_keyword = Article.search_by_keyword(params[:keyword])
-    # if params[:type_id].empty?
-    #   @articles_type = Article.all
-    # else
-    #   @articles_type = Article.search_by_type(params[:type_id])
-    # end
-    # if params[:career_id].empty?
-    #   @articles_career = Article.all
-    # else
-    #   @articles_career = Article.search_by_career(params[:career_id])
-    # end
-    # if params[:purpose_id].empty?
-    #   @articles_purpose = Article.all
-    # else
-    #   @articles_purpose = Article.search_by_purpose(params[:purpose_id])
-    # end
-    # # @articles = @articles_type & @articles_career & @articles_purpose & @articles_keyword
   end
 
   private

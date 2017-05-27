@@ -5,7 +5,15 @@
     <div class="alert alert-info">There are no ads article available. Contribute now.</div>
   <% else %>
     <% @articles.each do |article| %>
-      <div class="post-box col-lg-4 col-md-4 col-sm-4 fb-post img-responsive" data-href="<%= article.link %>" data-width="200"></div>
+      <div class="post-box col-lg-4 col-md-4 col-sm-4">
+        <div class="fb-post img-responsive" data-href="<%= article.link %>" data-width="200"></div>
+        <div class="article-show-title">
+          <%= link_to article.fanpage, article_path(article), class: 'label label-primary' %>
+        </div>
+        <div class="article-show-small">
+          <%= article.created_at.strftime("%d/%m/%Y") %>
+        </div>
+      </div>
     <% end %>
   <% end %>
 </div>

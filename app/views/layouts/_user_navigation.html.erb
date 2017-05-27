@@ -13,21 +13,40 @@
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Service', '#' %></li>
-        <li><%= link_to 'Contact', '#' %></li>
+        <li><%= link_to 'Service', service_path %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Types <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% Type.all.each do |type| %>
+                <li><%= link_to type.name, '#' %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Careers <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% Career.all.each do |career| %>
+                <li><%= link_to career.name, '#' %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Purposes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% Purpose.all.each do |purpose| %>
+                <li><%= link_to purpose.name, '#' %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li><%= link_to 'Contact', contact_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <form class="navbar-search navbar-form" method="get" action="">
-            <input type="text" class="form-control" placeholder="Search" name="s">
-          </form>
-        </li>
         <% if user_signed_in? %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-                <li><%= link_to 'Manage ads', '#' %></li>
+                <li><%= link_to 'Manage ads', admin_index_path %></li>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
               </ul>
