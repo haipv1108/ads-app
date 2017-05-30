@@ -1,0 +1,9 @@
+$('#message').text('');
+
+<% if @purpose.errors.any? %>
+  $('#message').html("<%= j render 'shared/error', object: @purpose %>");
+<% else %>
+  $('#edit_purpose_<%= @purpose.id %>').remove();
+  $('#update_purpose_<%= @purpose.id %>').show().after("<%= j render @purpose %>").remove();
+  demo.showNotification('success', 'top', 'center', 'Purpose was successfully updated.')
+<% end %>

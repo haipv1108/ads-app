@@ -1,0 +1,5 @@
+$('#new_career_link').hide().after("<%= j render 'form' %>")
+
+element_id_when_active_update_form = $('form.edit_career').attr('id').replace('edit', 'update');
+$('#' + element_id_when_active_update_form + '').show();
+$('form.edit_career').remove();

@@ -1,0 +1,11 @@
+$('p#message').text('');
+
+<% if @purpose.errors.any? %>
+  $('#message').html("<%= j render 'shared/error', object: @purpose %>");
+<% else %>
+  $('#new_purpose').remove();
+  $('#new_purpose_link').show();
+  $('#all_purposes').append("<%= j render @purpose %>");
+  demo.showNotification('success','top', 'center', 'Create purpose was successfully.')
+<% end %>
+

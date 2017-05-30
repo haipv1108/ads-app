@@ -1,0 +1,4 @@
+$('#update_career_<%= @career.id %>').hide().after("<%= j render 'form' %>");
+
+$('form.new_career').remove();
+$('#new_career_link').show();

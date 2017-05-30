@@ -1,27 +1,35 @@
 <% provide(:title, 'All careers') %>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4>All careers</h4>
-  </div>
-  <div class="panel-body">
-    <div class="text-center"><%= will_paginate %></div>
+
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header" data-background-color="purple">
+      <h4 class="title">All careers</h4>
+      <p class="category">Admin can create new career</p>
+    </div>
     <% if @careers.count == 0 %>
-      No careers. <%= link_to 'Create now!', new_admin_career_path, class: 'btn btn-primary' %>
+      <div class="alert alert-danger">
+        No careers. <%= link_to 'Create now!', new_admin_career_path, class: 'btn btn-primary' %>
+      </div>
     <% else %>
-      <table class="table table-bordered table-hover table-striped table-responsive">
-        <thead>
-        <tr>
-          <th>Name</th>
-          <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%= render @careers %>
-        </tbody>
-      </table>
+      <div class="card-content table-responsive table-hover table-striped table-bordered">
+        <table class="table">
+          <thead class="text-primary">
+            <th>Name</th>
+            <th>Actions</th>
+          </thead>
+          <tbody id="all_careers">
+            <%= render @careers %>
+          </tbody>
+        </table>
+        <div class="text-center"><%= will_paginate %></div>
+      </div>
     <% end %>
-  </div>
-  <div class="panel-footer">
-    <%= link_to 'Create new career', new_admin_career_path, class: 'btn btn-primary' %>
+    <div class="card-footer">
+      <%= link_to 'Create new career',
+                  new_admin_career_path,
+                  class: 'btn btn-primary',
+                  remote: true,
+                  id: 'new_career_link' %>
+    </div>
   </div>
 </div>

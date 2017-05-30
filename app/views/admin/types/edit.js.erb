@@ -1,0 +1,4 @@
+$('#update_type_<%= @type.id %>').hide().after("<%= j render 'form' %>")
+
+$('form.new_type').remove();
+$('#new_type_link').show();

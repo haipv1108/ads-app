@@ -1,0 +1,5 @@
+$('#new_purpose_link').hide().after("<%= j render 'form' %>")
+
+update_form_id = $('form.edit_purpose').attr('id').replace('edit', 'update');
+$('#' + update_form_id + '').show();
+$('form.edit_purpose').remove();

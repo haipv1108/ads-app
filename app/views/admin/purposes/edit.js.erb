@@ -1,0 +1,4 @@
+$('#update_purpose_<%= @purpose.id %>').hide().after("<%= j render 'form' %>");
+
+$('form.new_purpose').remove();
+$('#new_purpose_link').show();

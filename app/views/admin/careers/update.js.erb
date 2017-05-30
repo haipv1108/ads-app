@@ -1,0 +1,9 @@
+$('#message').text('');
+
+<% if @career.errors.any? %>
+  $('#message').html("<%= j render 'shared/error', object: @career %>");
+<% else %>
+  $('#edit_career_<%= @career.id %>').remove();
+  $('#update_career_<%= @career.id %>').after("<%= j render @career %>").remove();
+  demo.showNotification('success', 'top', 'center', 'Career was successfully updated.');
+<% end %>

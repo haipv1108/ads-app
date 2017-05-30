@@ -1,6 +1,6 @@
 module Admin
   class TypesController < AdminController
-    before_action :set_type, only: [:show, :edit, :update, :destroy]
+    before_action :set_type, only: [:edit, :update, :destroy]
 
     def index
       @types = Type.paginate(:page => params[:page], :per_page => 5)
@@ -12,16 +12,16 @@ module Admin
 
     def create
       @type = Type.new(type_params)
-      if @type.save
-        flash[:suceess] = 'Create type was successfully.'
-        redirect_to admin_types_path
-      else
-        render :new
+      respond_to do |format|
+        if @type.save
+          format.html { redirect_to admin_types_path, notice: 'Create type was successfully.' }
+          format.json { render json: @type, status: :created, location: admin_types_path }
+        else
+          format.html { render :new }
+          format.json { render json: @type.errors, status: :unprocessable_entity }
+        end
+        format.js
       end
-    end
-
-    def show
-
     end
 
     def edit
@@ -29,18 +29,24 @@ module Admin
     end
 
     def update
-      if @type.update(type_params)
-        flash[:suceess] = 'Update type was successfully.'
-        redirect_to admin_types_path
-      else
-        render :edit
+      respond_to do |format|
+        if @type.update(type_params)
+          format.html { redirect_to admin_types_path, notice: 'Update type was successfully.' }
+          format.json { render json: @type, status: :ok, location: admin_types_path }
+        else
+          format.html { render :edit }
+          format.json { render json: @type.errors, status: :unprocessable_entity }
+        end
+        format.js
       end
     end
 
     def destroy
       @type.destroy
-      flash[:danger] = 'Deleted type successfully.'
-      redirect_to admin_types_path
+      respond_to do |format|
+        format.html { redirect_to admin_types_path }
+        format.js
+      end
     end
 
     private

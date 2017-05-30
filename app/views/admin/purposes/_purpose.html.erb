@@ -1,10 +1,15 @@
-<tr>
+<tr id="update_purpose_<%= purpose.id %>">
   <td><%= purpose.name %></td>
   <td>
-    <%= link_to 'Edit', edit_admin_purpose_path(purpose), class: 'btn btn-primary' %>
-    <%= link_to 'Delete', admin_purpose_path(purpose),
+    <%= link_to 'Edit',
+                edit_admin_purpose_path(purpose),
+                class: 'btn btn-primary',
+                remote: true %>
+    <%= link_to 'Delete',
+                admin_purpose_path(purpose),
                 method: :delete,
                 data: { confirm: 'Are you sure?' },
-                class: 'btn btn-danger' %>
+                class: 'btn btn-danger',
+                remote: true %>
   </td>
 </tr>

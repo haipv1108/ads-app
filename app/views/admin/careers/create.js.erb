@@ -1,0 +1,10 @@
+$('#message').text('');
+
+<% if @career.errors.any? %>
+  $('#message').html("<%= j render 'shared/error', object: @career %>");
+<% else %>
+  $('#new_career').remove();
+  $('#new_career_link').show();
+  $('#all_careers').append("<%= j render @career %>");
+  demo.showNotification('success', 'top', 'center', 'Career was successfully created.')
+<% end %>

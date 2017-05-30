@@ -1,10 +1,6 @@
 module ApplicationHelper
 
-  def navigation_bar
-    if request.fullpath.include?('admin')
-      return 'layouts/admin_navigation'
-    else
-      return 'layouts/user_navigation'
-    end
+  def admin_navigation?
+    return true if request.fullpath.include?('admin')
   end
 end

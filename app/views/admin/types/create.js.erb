@@ -1,0 +1,10 @@
+$('p#message').text('');
+
+<% if @type.errors.any? %>
+  $('p#message').html("<%= j render 'shared/error', object: @type %>");
+<% else %>
+  $('#new_type_link').remove();
+  $('#new_type').show();
+  $('#all_types').append("<%=j render(@type) %>");
+  demo.showNotification('success', 'top', 'center', 'Type was successfully created.')
+<% end %>

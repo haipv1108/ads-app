@@ -12,6 +12,7 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'bootstrap-sass'
+gem 'sass-rails', '~> 5.0'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 

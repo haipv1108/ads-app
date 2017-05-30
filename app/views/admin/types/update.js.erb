@@ -1,0 +1,10 @@
+$('#message').text('');
+
+<% if @type.errors.any? %>
+  $('#message').html("<%= j render 'shared/error', object: @type %>");
+<% else %>
+  $('#edit_type_<%= @type.id %>').remove();
+  $('#update_type_<%= @type.id %>').show().after("<%= j render @type %>").remove();
+  demo.showNotification('success', 'top', 'center', 'Type was successfully updated.');
+<% end %>
+

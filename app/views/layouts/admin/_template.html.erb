@@ -1,0 +1,76 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="purple" data-image="<%= asset_path 'sidebar-1.jpg' %>">
+    <!--
+          Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+          Tip 2: you can also add an image using data-image tag
+      -->
+
+    <div class="logo">
+      <%= link_to 'Rails-Ads', root_path, class: 'simple-text' %>
+    </div>
+
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li class="<%= 'active' if params[:controller] == 'admin/dashboards' %>">
+          <%= link_to admin_root_path do %>
+              <i class="material-icons">dashboard</i> <p>Dashboard</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to '#' do %>
+              <i class="material-icons">person</i>
+              <p>Users</p>
+          <% end %>
+        </li>
+        <li class="<%= 'active' if params[:controller] == 'admin/types' %>">
+          <%= link_to admin_types_path do %>
+            <i class="material-icons">content_paste</i>
+              <p>Types</p>
+          <% end %>
+        </li>
+        <li class="<%= 'active' if params[:controller] == 'admin/careers' %>">
+          <%= link_to admin_careers_path do %>
+              <i class="material-icons">library_books</i>
+              <p>Careers</p>
+          <% end %>
+        </li>
+        <li class="<%= 'active' if params[:controller] == 'admin/purposes' %>">
+          <%= link_to admin_purposes_path do %>
+              <i class="material-icons">bubble_chart</i>
+              <p>Purposes</p>
+          <% end %>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons">location_on</i>
+            <p>Maps</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons text-gray">notifications</i>
+            <p>Notifications</p>
+          </a>
+        </li>
+        <li class="active-pro">
+          <a href="#">
+            <i class="material-icons">unarchive</i>
+            <p>Upgrade to PRO</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <%= render 'layouts/admin/navigation' %>
+    <div class="content">
+      <div class="container-fluid">
+        <%= bootstrap_flash %>
+        <%= yield %>
+      </div>
+    </div>
+    <%= render 'layouts/admin/footer' %>
+  </div>
+</div>

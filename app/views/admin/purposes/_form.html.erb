@@ -1,8 +1,8 @@
-<%= form_for([:admin, @purpose]) do |f| %>
-  <%= render 'shared/error', object: @purpose %>
-  <div class="form-group">
-    <%= f.label :name, "Purpose Name" %>
-    <%= f.text_field :name, class: 'form-control', placeholder: "Purpose's name" %>
+<%= form_for([:admin, @purpose], remote: true) do |f| %>
+  <p id="message"></p>
+  <div class="form-group label-floating">
+    <%= f.label :name, "Purpose's name", class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
